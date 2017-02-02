@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: dev
+#  data:
+#    mongodb:
+#      uri:
+server:
+  port: 9090
