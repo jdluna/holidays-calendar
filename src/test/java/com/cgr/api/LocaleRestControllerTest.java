@@ -21,7 +21,7 @@ import io.restassured.http.ContentType;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class LocaleRestControllerTestWeb {
+public class LocaleRestControllerTest {
 
 	public static final String jsonBR = "{ \"id\": \"BR\", \"name\": \"Brazil\", \"type\": \"COUNTRY\", \"locales\": [], \"holidays\": [ { \"day\": 0, \"description\": \"0\", \"month\": 0, \"year\": null } ] }";
 

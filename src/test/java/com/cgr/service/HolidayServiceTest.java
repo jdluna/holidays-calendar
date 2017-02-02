@@ -22,7 +22,7 @@ import com.mongodb.util.JSON;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HolidayServiceTest {
 
-	public static final String jsonHoliday = "{'day': 0,'description': '0','month': 0,'year': null}";
+	public static final String jsonHoliday = "{\"day\": 0,\"description\": \"0\",\"month\": 0,\"year\": null}";
 
 	@Autowired
 	private HolidayService service;

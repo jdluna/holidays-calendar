@@ -4,7 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.cgr.api.LocaleRestControllerTestWeb;
+import com.cgr.api.HolidayRestControllerTest;
+import com.cgr.api.LocaleRestControllerTest;
 import com.cgr.api.assembler.HolidayResourceAssemblerTest;
 import com.cgr.api.assembler.LocaleResourceAssemblerTest;
 import com.cgr.api.facade.HolidayFacadeTest;
@@ -18,7 +19,7 @@ import com.cgr.service.LocaleServiceTest;
 @RunWith(Suite.class)
 @SuiteClasses(value = { ApplicationTests.class, LocaleRepoTest.class, HolidayServiceTest.class, LocaleServiceTest.class,
 		HolidayResourceAssemblerTest.class, LocaleResourceAssemblerTest.class, HolidayFacadeTest.class,
-		LocaleFacadeTest.class, LocaleRestControllerTestWeb.class })
+		LocaleFacadeTest.class, LocaleRestControllerTest.class, HolidayRestControllerTest.class })
 public class SuiteTests {
 
 }
