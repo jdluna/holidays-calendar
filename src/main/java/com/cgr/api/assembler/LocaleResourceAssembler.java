@@ -62,4 +62,12 @@ public class LocaleResourceAssembler {
 		return locale;
 	}
 
+	public List<LocaleModel> toModels(List<LocaleResource> locales) {
+		List<LocaleModel> resources = new ArrayList<LocaleModel>(locales.size());		
+		for (LocaleResource resource : locales) {
+			resources.add(toModel(resource));
+		}
+		return resources;
+	}
+
 }

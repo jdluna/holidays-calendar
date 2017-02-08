@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.cgr.SuiteTests;
 import com.cgr.service.HolidayServiceTest;
 
 import io.restassured.RestAssured;
@@ -36,22 +37,35 @@ public class HolidayRestControllerTest {
 		// mt.getConverter().read(LocaleResource.class, (DBObject)
 		// JSON.parse(body));
 		// BDDMockito.given(this.facade.save(resource)).willReturn(resource);
-		RestAssured.given().contentType(ContentType.JSON).body(body).when().post("/locales").then().statusCode(200)
+		RestAssured.given().contentType(ContentType.JSON).body(body).when().post("/locales").then().statusCode(SuiteTests.HTTP_OK)
 				.body("id", Matchers.equalTo("BR"));
 	}
 
 	@Test
 	public void t01add() {
 		String body = HolidayServiceTest.jsonHoliday;
-		RestAssured.given().queryParam("idLocale", "BR").contentType(ContentType.JSON).body(body).when()
-				.post("/holidays").then().statusCode(200).body("day", Matchers.equalTo(0));
+		RestAssured.given()
+//		.queryParam("idLocale", "BR")
+		.pathParam("idLocale", "BR")
+		.contentType(ContentType.JSON).body(body).when()
+				.put("/holidays/{idLocale}").then().statusCode(SuiteTests.HTTP_OK).body("day", Matchers.equalTo(0));
 	}
 
 	@Test
 	public void t02get() {
 		// @RequestParam String idLocale
-		RestAssured.given().param("idLocale", "BR").when().get("/holidays").then().statusCode(200)
+		RestAssured.given()
+//		.param("idLocale", "BR")
+		.pathParam("idLocale", "BR")
+		.when().get("/holidays/{idLocale}").then().statusCode(SuiteTests.HTTP_OK)
 				.contentType(ContentType.JSON).body("[0].day", Matchers.equalTo(0));
+	}
+	
+	@Test
+	public void t03delete(){
+		RestAssured.given().contentType(ContentType.JSON)
+				.body("{\"id\":\"BR\", \"holidays\": [" + HolidayServiceTest.jsonHoliday + "]}").delete("/holidays").then()
+				.statusCode(SuiteTests.HTTP_OK).body("$.[0].day", Matchers.equalTo(0));
 	}
 
 }

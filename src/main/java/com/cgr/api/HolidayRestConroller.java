@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,13 +26,13 @@ public class HolidayRestConroller {
 	private HolidayFacade facade;
 
 	@ApiOperation(value = "Holidays list - find by locale.")
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<HolidayResource>> get(@RequestParam String idLocale) {
+	@RequestMapping(value = "/{idLocale}",method = RequestMethod.GET)
+	public ResponseEntity<List<HolidayResource>> get(@PathVariable(value = "idLocale") String idLocale) {
 		return ResponseEntity.ok().body(facade.findByLocale(idLocale));
 	}
 
 	@ApiOperation(value = "Add holiday for locale.")
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<HolidayResource> add(@RequestBody HolidayResource holidayResource,
 			@RequestParam String idLocale) {
 		return ResponseEntity.ok().body(facade.save(holidayResource, idLocale));

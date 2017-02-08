@@ -22,4 +22,6 @@ import com.cgr.service.LocaleServiceTest;
 		LocaleFacadeTest.class, LocaleRestControllerTest.class, HolidayRestControllerTest.class })
 public class SuiteTests {
 
+	public static final int HTTP_OK = 200;
+
 }

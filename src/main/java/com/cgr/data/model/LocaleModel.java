@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -24,6 +25,7 @@ public class LocaleModel {
 	private String name;
 
 	@NotEmpty
+	@Indexed
 	private LocaleType type;
 
 	@DBRef
@@ -39,5 +41,5 @@ public class LocaleModel {
 		this.locales = locales;
 		this.holidays = holidays;
 	}
-	
+
 }
