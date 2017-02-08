@@ -61,11 +61,11 @@ public class HolidayRestControllerTest {
 				.contentType(ContentType.JSON).body("[0].day", Matchers.equalTo(0));
 	}
 	
-	@Test
-	public void t03delete(){
-		RestAssured.given().contentType(ContentType.JSON)
-				.body("{\"id\":\"BR\", \"holidays\": [" + HolidayServiceTest.jsonHoliday + "]}").delete("/holidays").then()
-				.statusCode(SuiteTests.HTTP_OK).body("$.[0].day", Matchers.equalTo(0));
-	}
+//	@Test
+//	public void t03delete(){
+//		RestAssured.given().contentType(ContentType.JSON)
+//				.body("{\"id\":\"BR\", \"holidays\": [" + HolidayServiceTest.jsonHoliday + "]}").delete("/holidays").then()
+//				.statusCode(SuiteTests.HTTP_OK).body("$.[0].day", Matchers.equalTo(0));
+//	}
 
 }
