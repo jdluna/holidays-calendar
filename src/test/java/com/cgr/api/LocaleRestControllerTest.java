@@ -76,10 +76,10 @@ public class LocaleRestControllerTest {
 				.when().get("/locales").then().statusCode(SuiteTests.HTTP_OK).body("[0].id", Matchers.equalTo("BR"));
 	}
 
-	// @Test
-	// public void t05delete() {
-	// RestAssured.given().contentType(ContentType.JSON).body("[{\"id\":\"BR\"}]").when().delete("/locales").then()
-	// .statusCode(SuiteTests.HTTP_OK).body("[0].id", Matchers.equalTo("BR"));
-	// }
+	@Test
+	public void t05delete() {
+		RestAssured.given().contentType(ContentType.JSON).body("[{\"id\":\"BR\"}]").when().delete("/locales").then()
+				.statusCode(SuiteTests.HTTP_OK).body("[0].id", Matchers.equalTo("BR"));
+	}
 
 }
