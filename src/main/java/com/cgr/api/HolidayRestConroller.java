@@ -26,15 +26,15 @@ public class HolidayRestConroller {
 	private HolidayFacade facade;
 
 	@ApiOperation(value = "Holidays list - find by locale.")
-	@RequestMapping(value = "/{idLocale}",method = RequestMethod.GET)
+	@RequestMapping(value = "/{idLocale}", method = RequestMethod.GET)
 	public ResponseEntity<List<HolidayResource>> get(@PathVariable(value = "idLocale") String idLocale) {
 		return ResponseEntity.ok().body(facade.findByLocale(idLocale));
 	}
 
 	@ApiOperation(value = "Add holiday for locale.")
-	@RequestMapping(method = RequestMethod.PUT)
-	public ResponseEntity<HolidayResource> add(@RequestBody HolidayResource holidayResource,
-			@RequestParam String idLocale) {
+	@RequestMapping(method = RequestMethod.PUT, value = "/{idLocale}")
+	public ResponseEntity<HolidayResource> add(@PathVariable(value = "idLocale") String idLocale,
+			@RequestBody HolidayResource holidayResource) {
 		return ResponseEntity.ok().body(facade.save(holidayResource, idLocale));
 	}
 

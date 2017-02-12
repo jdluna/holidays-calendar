@@ -37,7 +37,7 @@ public class HolidayRestControllerTest {
 		// mt.getConverter().read(LocaleResource.class, (DBObject)
 		// JSON.parse(body));
 		// BDDMockito.given(this.facade.save(resource)).willReturn(resource);
-		RestAssured.given().contentType(ContentType.JSON).body(body).when().post("/locales").then().statusCode(SuiteTests.HTTP_OK)
+		RestAssured.given().contentType(ContentType.JSON).body(body).when().put("/locales").then().statusCode(SuiteTests.HTTP_OK)
 				.body("id", Matchers.equalTo("BR"));
 	}
 
@@ -46,9 +46,15 @@ public class HolidayRestControllerTest {
 		String body = HolidayServiceTest.jsonHoliday;
 		RestAssured.given()
 //		.queryParam("idLocale", "BR")
+//		.param("idLocale", "BR")
+		.contentType(ContentType.JSON)
+		.body(body)
 		.pathParam("idLocale", "BR")
-		.contentType(ContentType.JSON).body(body).when()
-				.put("/holidays/{idLocale}").then().statusCode(SuiteTests.HTTP_OK).body("day", Matchers.equalTo(0));
+		.when()
+				.put("/holidays/{idLocale}")
+				.then()
+				.statusCode(SuiteTests.HTTP_OK)
+				.body("day", Matchers.equalTo(0));
 	}
 
 	@Test
