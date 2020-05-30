@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HolidaysCalendarApp<holidaysCalendar>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cgr.HolidaysCalendarApp",
+            "projectName": "holidaysCalendar",
+            "args": ""
+        }
+    ]
+}

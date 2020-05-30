@@ -41,6 +41,14 @@ public class HolidayServiceImpl implements HolidayService {
 		return holidays;
 	}
 
+	@Override
+	public HolidayModel findByLocaleAndDateRef(String id, String dateRef) {
+		LocaleModel orgao = repo.findOne(id);
+		List<HolidayModel> holidays = getHolidays(orgao);
+		HolidayModel holiday = holidays.stream().filter(hol -> dateRef.equals(hol.toString())).findAny().orElse(null);
+		return holiday;
+	}
+
 	private List<HolidayModel> getHolidays(LocaleModel locale) {
 		List<HolidayModel> holidays = locale.getHolidays();
 		List<LocaleModel> locales = locale.getLocales();

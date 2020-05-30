@@ -23,6 +23,13 @@ public class HolidayResourceAssembler {
 		return resources;
 	}
 
+	public HolidayResource toResources(HolidayModel holiday) {
+		if (holiday == null) {
+			throw new ResourceNotFoundException("Holiday not found");
+		}
+		return toResource(holiday);
+	}
+
 	public HolidayModel toModel(HolidayResource resource) {
 		return new HolidayModel(resource.getDay(), resource.getMonth(), resource.getYear(), resource.getDescription());
 	}

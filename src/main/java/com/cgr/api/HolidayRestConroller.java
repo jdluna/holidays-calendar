@@ -31,6 +31,12 @@ public class HolidayRestConroller {
 		return ResponseEntity.ok().body(facade.findByLocale(idLocale));
 	}
 
+	@ApiOperation(value = "Holidays list - find by locale and date informat yyyyMMdd")
+	@RequestMapping(value = "/{idLocale}/{dateRef}", method = RequestMethod.GET)
+	public ResponseEntity<HolidayResource> get(@PathVariable(value = "idLocale") String idLocale, @PathVariable(value = "dateRef") String dateRef) {
+		return ResponseEntity.ok().body(facade.findByLocaleAndDateRef(idLocale, dateRef));
+	}
+
 	@ApiOperation(value = "Add holiday for locale.")
 	@RequestMapping(method = RequestMethod.PUT, value = "/{idLocale}")
 	public ResponseEntity<HolidayResource> add(@PathVariable(value = "idLocale") String idLocale,

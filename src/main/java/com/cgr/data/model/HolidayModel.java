@@ -27,4 +27,13 @@ public class HolidayModel {
 	@NotEmpty
 	private String description;
 
+	@Override
+	public String toString() 
+	{
+		String dia = String.format("%02d", day);
+		String mes = String.format("%02d", month);
+		String anno = String.valueOf(year);
+        return anno.concat(mes).concat(dia); 
+	}
+	
 }

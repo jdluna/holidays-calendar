@@ -8,6 +8,8 @@ public interface HolidayFacade {
 
 	List<HolidayResource> findByLocale(String idLocale);
 
+	HolidayResource findByLocaleAndDateRef(String idLocale, String dateRef);
+
 	HolidayResource save(HolidayResource holidayResource, String idLocale);
 
 }

@@ -25,6 +25,11 @@ public class HolidayFacadeImpl implements HolidayFacade {
 		List<HolidayModel> holidays = service.findByLocale(idLocale);
 		return assembler.toResources(holidays);
 	}
+	@Override
+	public HolidayResource findByLocaleAndDateRef(String idLocale, String dateRef) {
+		HolidayModel holiday = service.findByLocaleAndDateRef(idLocale, dateRef);
+		return assembler.toResources(holiday);
+	}
 
 	@Override
 	public HolidayResource save(HolidayResource resource, String idLocale) {
@@ -32,5 +37,4 @@ public class HolidayFacadeImpl implements HolidayFacade {
 		holiday = service.save(holiday, idLocale);
 		return assembler.toResource(holiday);
 	}
-
 }
